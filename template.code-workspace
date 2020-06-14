@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.xtpl": "html",
+			"cpcwyzlib.h": "c",
+			"stdio.h": "c"
+		}
+	}
+}
