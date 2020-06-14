@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT=template
+PROJECT=cptc-template
 
 # Don't modify code after this line
 
