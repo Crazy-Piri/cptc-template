@@ -1,3 +1,2 @@
-.vscode
-diamonds.dsk
+.vscode/*.json
 .DS_Store
