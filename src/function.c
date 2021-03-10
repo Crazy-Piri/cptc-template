@@ -115,14 +115,14 @@ void k_PrintGphStr(char *text, int destino)
         u16 pos = 0;
 
         if ((*car >= '0') && (*car <= '9')) {
-            pos = (((u16)(*car) - '0') + 1) * 24;
+            pos = (((u16)(*car) - '0') + 1);
         } else if ((*car >= 'A') && (*car <= 'Z')) {
-            pos = (((u16)(*car) - 'A') + 12) * 24;
+            pos = (((u16)(*car) - 'A') + 12);
         } else if (*car == '@') {
-            pos = 11 * 24;
+            pos = 11;
         }
 
-        sprite = G_font8pix + pos;
+        sprite = G_font6x8_tileset[pos];
 
         cpc_PutSp((char *)sprite, 8, 3, destino);
 

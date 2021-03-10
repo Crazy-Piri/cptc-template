@@ -35,7 +35,7 @@ void main(void)
     push ix
     push iy
 
-    ld hl, #_TETRISA_START
+    ld hl, #_MYSUPERSONG_START
     xor a, a
     call _PLY_AKG_INIT
 
@@ -54,6 +54,8 @@ void main(void)
     installArkosHook();     // Load _PLY_AKG_INIT before installing the hook
 
 // Keyboard definition
+
+// http://www.cpcwiki.eu/index.php/Programming:Keyboard_scanning
 
     cpc_AssignKey(KEY_RIGHT, 0x4002);       // key RIGHT
     cpc_AssignKey(KEY_LEFT, 0x4101);       // key LEFT

@@ -1,0 +1,59 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "SDCC - make",
+            "command": "killall -9 'Retro Virtual Machine 2' ; docker run --rm -v ${workspaceRoot}/:/src/ -it redbug26/cptc-docker make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": {
+                "owner": "base",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}/src"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):\\s+(warning|error|syntax error)[^:]*:\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            }
+        },
+        {
+            "type": "process",
+            "label": "SDCC - Retro Virtual Machine - old",
+            "command": "./rvm.sh",
+        },
+        {
+            "type": "process",
+            "label": "SDCC - Retro Virtual Machine",
+            "command": "open",
+            "args": [
+                "-a",
+                "/Applications/Retro Virtual Machine 2.app/Contents/MacOS/Retro Virtual Machine 2",
+                "--args",
+                "-w",
+                "-b=cpc6128",
+                "-i",
+                "${workspaceRoot}/cptc-template.dsk",
+                "-c=run\"main\"\\n"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "SDCC - clean",
+            "command": "killall -9 'Retro Virtual Machine 2' ; docker run --rm -v ${workspaceRoot}/:/src/ -it redbug26/cptc-docker make clean"
+        }
+    ]
+}

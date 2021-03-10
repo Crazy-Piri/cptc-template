@@ -8,7 +8,30 @@
 
 char mainGame(void)
 {
-    lzsa_expand(G_background_192x160_scr, (char *)(0xC000));
+      #ifdef SOUND
+    __asm
+    push af
+    push bc
+    push ix
+    push iy
+
+    ld hl, #_MYSUPERSONG_START
+    xor a, a
+    call _PLY_AKG_INIT
+
+    ld hl, #_SOUNDEFFECTS_SOUNDEFFECTS
+    xor a, a
+    call _PLY_AKG_INITSOUNDEFFECTS
+
+
+    pop iy
+    pop ix
+    pop bc
+    pop af
+       __endasm;
+#endif /* ifdef SOUND */
+
+    lzsa_expand(G_background_192x160, (char *)(0xC000));
 
     k_PrintGphStr("MAIN", cpc_GetScrAddress((96 - 4 * 3) / 2, 32));
 

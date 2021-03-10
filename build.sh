@@ -6,6 +6,7 @@ PROJECT=cptc-template
 
 cd /src/$PROJECT
 
+
 CFLAGS="--fomit-frame-pointer --allow-unsafe-read -Wp,-include,../include/prefix.h"
 CODELOC=0x400
 
